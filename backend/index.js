@@ -52,9 +52,18 @@ app.get('/api/confirmados', async (req, res) => {
   }
 });
 
+// Servir archivos estáticos desde el directorio public
+app.use(express.static(path.join(__dirname, '../public')));
 
-// Servir frontend (opcional)
-app.use(express.static(path.join(__dirname, '../frontend')));
+// Redireccionar la ruta raíz a la página principal
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
+
+// Manejar todas las demás rutas para SPA (Single Page Application)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
