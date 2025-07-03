@@ -47,12 +47,12 @@ updateCountdown()
 // Galería modal mejorada
 let currentImageIndex = 0
 const galleryImages = [
-  "./src/img/portada.jpg",
-  "./src/img/3.jpg",
-  "./src/img/4.jpg",
-  "./src/img/5.jpg",
-  "./src/img/6.jpg",
-  "./src/img/7.jpg"
+  "./img/portada.jpg",
+  "./img/3.jpg",
+  "./img/4.jpg",
+  "./img/5.jpg",
+  "./img/6.jpg",
+  "./img/7.jpg"
 ]
 
 function openModal(index) {
