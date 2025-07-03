@@ -199,7 +199,7 @@ let audio = null
 
 function playMusic() {
   if (!audio) {
-    audio = new Audio("./img/music.mp3")
+    audio = new Audio("./src/img/music.mp3")
     audio.loop = true
     audio.volume = 0.3
   }
@@ -221,7 +221,7 @@ function toggleMusic() {
   const button = document.getElementById("musicToggle")
 
   if (!audio) {
-    audio = new Audio("./img/music.mp3")
+    audio = new Audio("./src/img/music.mp3")
     audio.loop = true
     audio.volume = 0.3
   }
