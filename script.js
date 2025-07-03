@@ -197,14 +197,31 @@ function closeCustomAlert() {
 let isPlaying = false
 let audio = null
 
+function playMusic() {
+  if (!audio) {
+    audio = new Audio("./src/music.mp3")
+    audio.loop = true
+    audio.volume = 0.3
+  }
+  audio.play().then(() => {
+    isPlaying = true
+    const button = document.getElementById("musicToggle")
+    if (button) {
+      button.classList.add("playing")
+      button.innerHTML = '<i class="fas fa-pause"></i>'
+      button.title = "Pausar música"
+    }
+  }).catch((e) => {
+    // Si el navegador bloquea la reproducción automática, no hacer nada
+    // El usuario podrá activarla manualmente
+  })
+}
+
 function toggleMusic() {
   const button = document.getElementById("musicToggle")
 
   if (!audio) {
-    // Aquí puedes poner la URL de tu música favorita
-    audio = new Audio(
-      "data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT",
-    )
+    audio = new Audio("./src/music.mp3")
     audio.loop = true
     audio.volume = 0.3
   }
@@ -217,7 +234,6 @@ function toggleMusic() {
     isPlaying = false
   } else {
     audio.play().catch((e) => {
-      console.log("No se pudo reproducir la música automáticamente")
       showMusicError()
     })
     button.classList.add("playing")
@@ -379,6 +395,40 @@ document.addEventListener("DOMContentLoaded", () => {
     const img = new Image()
     img.src = src
   })
+
+  // Reproducir música automáticamente al cargar la página
+  playMusic()
+
+  function tryPlayMusicOnInteraction() {
+    if (!isPlaying) {
+      playMusic();
+      // Solo intenta una vez
+      window.removeEventListener('click', tryPlayMusicOnInteraction);
+      window.removeEventListener('keydown', tryPlayMusicOnInteraction);
+      window.removeEventListener('touchstart', tryPlayMusicOnInteraction);
+    }
+  }
+
+  window.addEventListener('click', tryPlayMusicOnInteraction);
+  window.addEventListener('keydown', tryPlayMusicOnInteraction);
+  window.addEventListener('touchstart', tryPlayMusicOnInteraction);
+
+  // Simular una interacción de usuario después de un pequeño retraso
+  setTimeout(() => {
+    if (!isPlaying) {
+      const event = new Event('click');
+      document.body.dispatchEvent(event);
+    }
+  }, 500);
+
+  var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+  var iframeAudio = document.getElementById('iframeAudio');
+  var playAudio = document.getElementById('playAudio');
+  if (!isChrome){
+      if (iframeAudio) iframeAudio.parentNode.removeChild(iframeAudio);
+  } else {
+      if (playAudio) playAudio.parentNode.removeChild(playAudio);
+  }
 })
 
 // Función para enviar RSVP (placeholder para integración futura)
