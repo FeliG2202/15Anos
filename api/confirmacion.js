@@ -1,11 +1,13 @@
 const admin = require('firebase-admin');
-const serviceAccount = require('../backend/serviceAccountKey.json');
 
 // Inicializar Firebase solo una vez
 if (!admin.apps.length) {
   admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    projectId: "itza15anos",
+    credential: admin.credential.cert({
+      projectId: process.env.FIREBASE_PROJECT_ID,
+      privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+    }),
   });
 }
 const db = admin.firestore();
