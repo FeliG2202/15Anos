@@ -47,12 +47,12 @@ updateCountdown()
 // Galería modal mejorada
 let currentImageIndex = 0
 const galleryImages = [
-  "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-xpOOvJ0Fflm8PEEqqNPqp3JZmgnN6i.png",
-  "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=600&h=600&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=600&h=600&fit=crop&crop=face",
-  "https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&h=600&fit=crop&crop=center",
-  "https://images.unsplash.com/photo-1519741497674-611481863552?w=600&h=600&fit=crop&crop=center",
-  "https://images.unsplash.com/photo-1464207687429-7505649dae38?w=600&h=600&fit=crop&crop=center",
+  "./src/img/portada.jpg",
+  "./src/img/3.jpg",
+  "./src/img/4.jpg",
+  "./src/img/5.jpg",
+  "./src/img/6.jpg",
+  "./src/img/7.jpg"
 ]
 
 function openModal(index) {
