@@ -49,6 +49,7 @@ let currentImageIndex = 0
 const galleryImages = [
   "./img/portada.jpg",
   "./img/2.jpg",
+  "./img/7.jpeg",
   "./img/3.jpeg",
   "./img/4.jpeg",
   "./img/5.jpg",
