@@ -127,10 +127,15 @@ document.addEventListener("keydown", (event) => {
 })
 
 // Función para abrir Google Maps
-function openMap() {
-  const address = encodeURIComponent("Salón de Eventos Los Jardines, Av. Principal #123")
-  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${address}`
-  window.open(googleMapsUrl, "_blank")
+function openMap(event) {
+  if (event) event.preventDefault();
+  const urlUniversal = "https://maps.app.goo.gl/NQ8yaYrUHiVfrQWs7?g_st=aw";
+  const urlWeb = "https://maps.app.goo.gl/NQ8yaYrUHiVfrQWs7?g_st=aw";
+  if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    window.open(urlUniversal, "_blank");
+  } else {
+    window.open(urlWeb, "_blank");
+  }
 }
 
 // Confirmación de asistencia mejorada
@@ -556,7 +561,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         lista.innerHTML = `
           <div class="table-responsive">
-            <table class="confirmados-table">
+            <table id="tablaConfirmados" class="confirmados-table">
               <thead>
                 <tr>
                   <th>Nombre</th>
@@ -567,15 +572,32 @@ document.addEventListener("DOMContentLoaded", () => {
               <tbody>
                 ${data.map(c => `
                   <tr>
-                    <td data-label="Nombre">${c.nombres}</td>
-                    <td data-label="Acompañantes" style="text-align:center;">${c.total && c.total > 1 ? (c.total-1) : '-'}</td>
-                    <td data-label="Confirmación" style="text-align:center;"><span class="status-badge ${c.confirmacion==='Sí' ? 'confirmed' : 'declined'}">${c.confirmacion==='Sí' ? '¡Sí va!' : 'No va'}</span></td>
+                    <td>${c.nombres}</td>
+                    <td style="text-align:center;">${c.total && c.total > 1 ? (c.total-1) : '-'}</td>
+                    <td style="text-align:center;"><span class="status-badge ${c.confirmacion==='Sí' ? 'confirmed' : 'declined'}">${c.confirmacion==='Sí' ? '¡Sí va!' : 'No va'}</span></td>
                   </tr>
                 `).join('')}
               </tbody>
             </table>
           </div>
         `;
+        // Inicializar Vanilla-DataTables si hay datos
+        setTimeout(() => {
+          const tabla = document.getElementById('tablaConfirmados');
+          if (tabla && window.DataTable) {
+            new DataTable(tabla, {
+              perPage: 10,
+              perPageSelect: [10, 20, 50, 100],
+              labels: {
+                placeholder: "Buscar...",
+                perPage: "Mostrar {select} registros por página",
+                noRows: "No hay confirmados para mostrar",
+                info: "Mostrando {start} a {end} de {rows} registros"
+              },
+              responsive: true
+            });
+          }
+        }, 100);
       })
       .catch(() => {
         lista.innerHTML = '<span style="color:red">Error al cargar confirmados.</span>';

@@ -11,6 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.css">
 </head>
 
 <body>
@@ -118,7 +119,7 @@
                             <i class="fas fa-clock"></i>
                             <div class="event-info-text">
                                 <span class="event-info-label">Hora</span>
-                                <span class="event-info-value">8:00 PM</span>
+                                <span class="event-info-value">7:00 PM</span>
                             </div>
                         </div>
 
@@ -126,8 +127,8 @@
                             <i class="fas fa-map-marker-alt"></i>
                             <div class="event-info-text">
                                 <span class="event-info-label">Lugar</span>
-                                <span class="event-info-value">Salón "Los Jardines"</span>
-                                <span class="event-info-address">Av. Principal #123, Ciudad</span>
+                                <span class="event-info-value">Casa quinta Los Pinos</span>
+                                <span class="event-info-address">76V5+FR Ricaurte, Cundinamarca</span>
                             </div>
                         </div>
                     </div>
@@ -275,12 +276,12 @@
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
                     <div class="location-details">
-                        <h4>Salón de Eventos "Los Jardines"</h4>
-                        <p>Av. Principal #123<br>Ciudad, Estado</p>
+                        <h4>Casa quinta Los Pinos</h4>
+                        <p>76V5+FR <br>Ricaurte, Cundinamarca</p> 
                     </div>
                 </div>
                 <div class="location-map">
-                    <a href="#" onclick="openMap()"><i class="fas fa-directions"></i><span>Mapa interactivo</span></a>
+                    <a href="#" onclick="openMap(event)"><i class="fas fa-directions"></i><span>Mapa interactivo</span></a>
                 </div>
             </div>
         </div>
@@ -364,17 +365,20 @@
     <!-- Modal de confirmados -->
     <div id="confirmadosModal" class="modal">
         <div class="modal-backdrop" onclick="closeConfirmadosModal()"></div>
-        <div class="modal-content" style="max-width:500px;">
-            <button class="modal-close" onclick="closeConfirmadosModal()">
-                <i class="fas fa-times"></i>
-            </button>
-            <div style="text-align:center; margin-bottom:1rem;">
-                <h3 style="font-family:'Playfair Display',serif; color:var(--accent-pink); font-size:2rem;">Personas que confirmaron</h3>
+        <div class="modal-content" style="max-width:900px;">
+            <div class="confirmados-card">
+                <button class="modal-close" onclick="closeConfirmadosModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="confirmados-title-container">
+                    <h3 class="confirmados-title">Personas que confirmaron</h3>
+                </div>
+                <div id="listaConfirmados" class="confirmados-table-container"></div>
             </div>
-            <div id="listaConfirmados" style="min-height:100px; text-align:center; color:var(--text-dark);"></div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-datatables@latest/dist/vanilla-dataTables.min.js"></script>
     <script src="./script.js"></script>
 </body>
 
