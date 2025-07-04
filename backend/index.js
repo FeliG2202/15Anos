@@ -187,4 +187,6 @@ app.listen(PORT, () => {
     console.log(`⚠️  Modo temporal activado - Sin Firebase`);
     console.log(`💡 Ejecuta 'npm run prepare-vercel' para configurar Firebase`);
   }
-}); 
+});
+
+module.exports = app; 
