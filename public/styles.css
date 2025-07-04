@@ -784,22 +784,27 @@ section {
 
 .modal-close {
   position: absolute;
-  top: -50px;
-  right: 0;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: var(--white);
+  top: 16px;
+  right: 16px;
+  background: var(--accent-pink) !important;
+  color: #fff !important;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   font-size: 1.2rem;
   cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: background 0.3s ease;
+  border: none;
+  box-shadow: 0 2px 8px rgba(233,30,99,0.13);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  transition: background 0.2s;
 }
 
 .modal-close:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: #f8bbd9 !important;
+  color: var(--accent-pink) !important;
 }
 
 .modal-image-container {
@@ -1488,36 +1493,103 @@ table.confirmados-table tr:last-child td {
 }
 
 .confirmados-card {
+  position: relative;
   background: #fff;
   border-radius: 22px;
   box-shadow: 0 8px 32px rgba(233,30,99,0.13);
   padding: 2.5rem 1.5rem 2rem 1.5rem;
-  position: relative;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 2rem auto;
   min-height: 300px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .confirmados-table-container {
-  max-height: 95vh;
-  overflow-y: auto;
+  width: 100%;
+  max-width: 100%;
   overflow-x: auto;
+  overflow-y: auto;
+  margin: 0 auto;
+  background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(233,30,99,0.07);
-  background: #fff;
   padding: 0.5rem 0;
+  min-height: 100px;
+  text-align: center;
+  color: var(--text-dark);
+  box-sizing: border-box;
 }
 
-@media (max-width: 600px) {
+.confirmados-table {
+  min-width: 600px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.confirmados-title-container {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.confirmados-title {
+  font-family: 'Playfair Display', serif;
+  color: var(--accent-pink);
+  font-size: 2rem;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
   .confirmados-card {
-    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
     max-width: 98vw;
+    margin: 1rem auto;
+    padding: 1.5rem 0.5rem 1.2rem 0.5rem;
+  }
+  .confirmados-table {
+    min-width: 400px;
+  }
+}
+
+@media (max-width: 300px) {
+  .confirmados-card {
+    width: 100vw;
+    max-width: 100vw;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(233,30,99,0.10);
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    min-height: 200px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+  .modal-close {
+    top: 12px;
+    right: 12px;
+    left: auto;
+    z-index: 3;
+  }
+  .confirmados-title {
+    font-size: 1.3rem;
   }
   .confirmados-table-container {
+    max-width: 100vw;
+    width: 100vw;
     max-height: 85vh;
-    padding: 0.2rem 0;
+    padding: 0.1rem 0.1rem;
+    border-radius: 8px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    overflow-x: auto;
+  }
+  .confirmados-table {
+    min-width: 320px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
   }
 }
