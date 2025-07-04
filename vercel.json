@@ -15,8 +15,5 @@
       "src": "/(.*)",
       "dest": "public/$1"
     }
-  ],
-  "env": {
-    "FIREBASE_ADMIN_SDK_CONFIG": "@firebase-admin-sdk-config"
-  }
+  ]
 } 
