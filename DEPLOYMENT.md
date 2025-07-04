@@ -61,6 +61,11 @@ Asegúrate de que tu código esté en un repositorio de GitHub, GitLab o Bitbuck
 - Este error solo ocurre en desarrollo local, no en Vercel
 - En Vercel, el puerto se asigna automáticamente
 
+### Error: "Deployment failed"
+- Verifica que el archivo `vercel.json` esté configurado correctamente
+- Asegúrate de que las variables de entorno estén configuradas
+- Revisa los logs de despliegue en Vercel Dashboard
+
 ## 📁 **Estructura del Proyecto para Vercel**
 
 ```
@@ -99,5 +104,11 @@ Después del despliegue, verifica que:
 - ✅ El formulario de confirmación funciona
 - ✅ La API responde correctamente
 - ✅ Firebase está conectado
+
+## 🚨 **Importante**
+
+- **NUNCA** subas las credenciales de Firebase al repositorio
+- **SIEMPRE** usa variables de entorno en producción
+- **VERIFICA** que la variable `FIREBASE_ADMIN_SDK_CONFIG` esté configurada antes de desplegar
 
 ¡Tu aplicación estará lista para usar! 🎉 
