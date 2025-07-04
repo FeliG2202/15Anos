@@ -757,6 +757,8 @@ section {
   top: 0;
   width: 100%;
   height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .modal-backdrop {
@@ -775,8 +777,9 @@ section {
   max-width: 800px;
   margin: 2rem auto;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) scale(0.9);
   z-index: 1001;
+  transition: transform 0.3s ease;
 }
 
 .modal-close {
@@ -833,6 +836,150 @@ section {
 .nav-btn:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: scale(1.1);
+}
+
+/* Tabla responsive para confirmados */
+.table-responsive {
+  overflow-x: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.confirmados-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.confirmados-table th,
+.confirmados-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.confirmados-table th {
+  background: var(--gradient-accent);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.confirmados-table tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.confirmados-table tr:nth-child(odd) {
+  background: white;
+}
+
+.confirmados-table tr:hover {
+  background: #f5f5f5;
+  transition: background 0.3s ease;
+}
+
+.confirmados-table td,
+.confirmados-table th {
+  border: none;
+}
+
+.confirmados-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Badges de estado */
+.status-badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.confirmed {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+.status-badge.declined {
+  background: #ffebee;
+  color: #c62828;
+}
+
+/* Responsive para la tabla */
+@media (max-width: 768px) {
+  .confirmados-table {
+    font-size: 0.9rem;
+  }
+  
+  .confirmados-table th,
+  .confirmados-table td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .status-badge {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .confirmados-table thead {
+    display: none;
+  }
+  
+  .confirmados-table,
+  .confirmados-table tbody,
+  .confirmados-table tr,
+  .confirmados-table td {
+    display: block;
+    width: 100%;
+  }
+  
+  .confirmados-table tr {
+    margin-bottom: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1rem;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .confirmados-table td {
+    border: none;
+    padding: 0.5rem 0;
+    text-align: left;
+    position: relative;
+    padding-left: 50%;
+  }
+  
+  .confirmados-table td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 45%;
+    font-weight: 600;
+    color: var(--text-dark);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .confirmados-table td[data-label="Acompañantes"],
+  .confirmados-table td[data-label="Confirmación"] {
+    text-align: left;
+  }
+  
+  .status-badge {
+    display: inline-block;
+    margin-top: 0.25rem;
+  }
 }
 
 /* Ubicación */

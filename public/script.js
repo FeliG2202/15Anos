@@ -541,6 +541,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const lista = document.getElementById('listaConfirmados');
     lista.innerHTML = '<span style="color:var(--text-muted)">Cargando...</span>';
     modal.style.display = 'block';
+    modal.style.opacity = '0';
     requestAnimationFrame(() => {
       modal.style.opacity = '1';
       modal.querySelector('.modal-content').style.transform = 'translateY(-50%) scale(1)';
@@ -554,8 +555,8 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         }
         lista.innerHTML = `
-          <div style=\"overflow-x:auto;\">
-            <table class=\"confirmados-table\" style=\"width:100%; border-collapse:collapse; font-size:1rem;\">
+          <div class="table-responsive">
+            <table class="confirmados-table">
               <thead>
                 <tr>
                   <th>Nombre</th>
@@ -566,9 +567,9 @@ document.addEventListener("DOMContentLoaded", () => {
               <tbody>
                 ${data.map(c => `
                   <tr>
-                    <td>${c.nombres}</td>
-                    <td style=\"text-align:center;\">${c.total && c.total > 1 ? (c.total-1) : '-'}</td>
-                    <td style=\"text-align:center;\"><span style=\"font-weight:bold; color:${c.confirmacion==='Sí'?'#43a047':'#e53935'};\">${c.confirmacion==='Sí' ? '¡Sí va!' : 'No va'}</span></td>
+                    <td data-label="Nombre">${c.nombres}</td>
+                    <td data-label="Acompañantes" style="text-align:center;">${c.total && c.total > 1 ? (c.total-1) : '-'}</td>
+                    <td data-label="Confirmación" style="text-align:center;"><span class="status-badge ${c.confirmacion==='Sí' ? 'confirmed' : 'declined'}">${c.confirmacion==='Sí' ? '¡Sí va!' : 'No va'}</span></td>
                   </tr>
                 `).join('')}
               </tbody>
@@ -580,15 +581,23 @@ document.addEventListener("DOMContentLoaded", () => {
         lista.innerHTML = '<span style="color:red">Error al cargar confirmados.</span>';
       });
   }
+  
   function closeConfirmadosModal() {
     const modal = document.getElementById('confirmadosModal');
-    modal.style.opacity = '0';
-    modal.querySelector('.modal-content').style.transform = 'translateY(-50%) scale(0.9)';
-    setTimeout(() => {
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }, 300);
+    if (modal) {
+      modal.style.opacity = '0';
+      modal.querySelector('.modal-content').style.transform = 'translateY(-50%) scale(0.9)';
+      setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }, 300);
+    }
   }
+  
+  // Hacer las funciones globales para que funcionen desde el HTML
+  window.openConfirmadosModal = openConfirmadosModal;
+  window.closeConfirmadosModal = closeConfirmadosModal;
+  
   const verConfirmadosBtn = document.getElementById('verConfirmadosBtn');
   if (verConfirmadosBtn) {
     verConfirmadosBtn.addEventListener('click', openConfirmadosModal);
