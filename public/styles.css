@@ -912,76 +912,6 @@ section {
   color: #c62828;
 }
 
-/* Responsive para la tabla */
-@media (max-width: 768px) {
-  .confirmados-table {
-    font-size: 0.9rem;
-  }
-  
-  .confirmados-table th,
-  .confirmados-table td {
-    padding: 0.75rem 0.5rem;
-  }
-  
-  .status-badge {
-    padding: 0.4rem 0.8rem;
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .confirmados-table thead {
-    display: none;
-  }
-  
-  .confirmados-table,
-  .confirmados-table tbody,
-  .confirmados-table tr,
-  .confirmados-table td {
-    display: block;
-    width: 100%;
-  }
-  
-  .confirmados-table tr {
-    margin-bottom: 1rem;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 1rem;
-    background: white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .confirmados-table td {
-    border: none;
-    padding: 0.5rem 0;
-    text-align: left;
-    position: relative;
-    padding-left: 50%;
-  }
-  
-  .confirmados-table td:before {
-    content: attr(data-label);
-    position: absolute;
-    left: 0;
-    width: 45%;
-    font-weight: 600;
-    color: var(--text-dark);
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 0.5px;
-  }
-  
-  .confirmados-table td[data-label="Acompañantes"],
-  .confirmados-table td[data-label="Confirmación"] {
-    text-align: left;
-  }
-  
-  .status-badge {
-    display: inline-block;
-    margin-top: 0.25rem;
-  }
-}
-
 /* Ubicación */
 .location {
   background: var(--white);
@@ -1555,4 +1485,39 @@ table.confirmados-table td, table.confirmados-table th {
 }
 table.confirmados-table tr:last-child td {
   border-bottom: none;
+}
+
+.confirmados-card {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(233,30,99,0.13);
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.confirmados-table-container {
+  max-height: 95vh;
+  overflow-y: auto;
+  overflow-x: auto;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(233,30,99,0.07);
+  background: #fff;
+  padding: 0.5rem 0;
+}
+
+@media (max-width: 600px) {
+  .confirmados-card {
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    max-width: 98vw;
+  }
+  .confirmados-table-container {
+    max-height: 85vh;
+    padding: 0.2rem 0;
+  }
 }
