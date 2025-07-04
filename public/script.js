@@ -53,7 +53,8 @@ const galleryImages = [
   "./img/3.jpeg",
   "./img/4.jpeg",
   "./img/5.jpg",
-  "./img/6.jpeg"
+  "./img/6.jpeg",
+  "./img/8.jpeg"
 ]
 
 function openModal(index) {
