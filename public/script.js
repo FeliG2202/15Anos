@@ -48,11 +48,11 @@ updateCountdown()
 let currentImageIndex = 0
 const galleryImages = [
   "./img/portada.jpg",
-  "./img/3.jpg",
-  "./img/4.jpg",
+  "./img/2.jpg",
+  "./img/3.jpeg",
+  "./img/4.jpeg",
   "./img/5.jpg",
-  "./img/6.jpg",
-  "./img/7.jpg"
+  "./img/6.jpeg"
 ]
 
 function openModal(index) {
