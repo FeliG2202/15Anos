@@ -2,7 +2,9 @@
   "name": "quinceanera-invitation",
   "version": "1.0.0",
   "scripts": {
-    "start": "node backend/index.js"
+    "start": "node backend/index.js",
+    "dev": "node backend/index.js",
+    "prepare-vercel": "node scripts/prepare-vercel.js"
   },
   "dependencies": {
     "express": "^4.18.2",
